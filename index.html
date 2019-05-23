@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+     <link rel="manifest" href="/manifest.json">
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+      <title>Github search</title>
+      <link rel="stylesheet" type="text/css" href="styles/index.css">
+   </head>
+   <body>
+      <div class="main-container">
+         <section class="search-form">
+            <form id="searchForm">
+               <input type="text" id="searchInput" placeholder="Search username..."  required>
+               <button id="searchButton">Search</button>
+            </form>
+         </section>
+         <section class="no-results">
+            <p>Does not exist.</p>
+         </section>
+         <section class= "results">
+            <div class="user-info">
+               <div class="user-logo">
+                  <img src="" alt="">
+               </div>
+               <div class="user-name">
+                  <p><em class="login-name"></em></p>
+                  <h1 class="full-name"></h1>
+                  <p class="description"></p>
+               </div>
+            </div>
+            <div class="repositories">
+               <h4><strong>Repositories</strong></h4>
+               <hr>
+               <table id="reposTable">
+               </table>
+            </div>
+         </section>
+      </div>
+      <script type="text/javascript" src="index.js"> </script>
+   </body>
+</html>

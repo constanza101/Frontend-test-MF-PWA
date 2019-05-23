@@ -1,0 +1,110 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,400i,700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  background-color: #F0F0F0;
+}
+
+.loginName, .description {
+  font-size: 14px;
+  font-weight: lighter;
+}
+
+.fullName {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 2em;
+}
+
+.main-container {
+  background-color: #fff;
+  width: 400px;
+  padding: 32px;
+  margin: 32px auto;
+  border-radius: 15px;
+  box-shadow: 5px 5px 20px 0 #888;
+}
+.main-container .search-form {
+  margin: 0 auto;
+  text-align: center;
+}
+.main-container .search-form input {
+  padding: 8px 16px;
+  font-size: 0.8em;
+  width: 240px;
+  border: 1px solid #D6D6D6;
+  border-radius: 4px;
+}
+.main-container .search-form button {
+  font-weight: bold;
+  font-size: 0.8em;
+  padding: 8px 16px;
+  margin: 0 0 0 10px;
+  border-radius: 4px;
+  border: 1px solid #D6D6D6;
+  background-color: #fff;
+}
+.main-container .search-form button:hover {
+  background-color: #f1f1f1;
+}
+
+.no-results {
+  display: none;
+  margin-top: 20px;
+  background-color: #F2DEDF;
+  border: solid 1px #dbb1b3;
+  border-radius: 3px;
+  color: #AB4748;
+  padding: 15px;
+  font-size: 14px;
+}
+
+.results {
+  display: none;
+  margin-top: 15px;
+}
+.results .user-logo {
+  width: 72px;
+  height: 72px;
+  float: left;
+  margin-right: 15px;
+}
+.results .user-logo img {
+  height: -webkit-fill-available;
+}
+.results .user-info {
+  height: 72px;
+}
+.results .repositories {
+  margin-top: 20px;
+}
+.results hr {
+  margin-top: 10px;
+  border: solid 1px gray;
+}
+.results #reposTable {
+  table-layout: initial;
+  width: 100%;
+}
+
+td, th {
+  border-bottom: 1px solid #ccc;
+  text-align: left;
+  padding: 10px;
+}
+
+td {
+  text-align: right;
+  font-size: 14px;
+}
+
+/*# sourceMappingURL=index.css.map */

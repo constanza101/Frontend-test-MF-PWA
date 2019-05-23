@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,400i,700&display=swap');
+$font-stack: 'Roboto',sans-serif;
+$form-inputs-border-color: #D6D6D6;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    font-size: 16px;
+    font-family: $font-stack;
+}
+body {
+    background-color: #F0F0F0;
+}
+.login-name, .description {
+    font-size: 16px;
+    font-weight: lighter;
+}
+.full-name {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 2em;
+}
+.main-container {
+    background-color: #fff;
+    width: 400px;
+    padding: 32px;
+    margin: 32px auto;
+    border-radius: 15px;
+    box-shadow: 5px 5px 20px 0 #888;
+    .search-form {
+        margin: 0 auto;
+        text-align: center;
+        input {
+            padding: 8px 16px;
+            font-size: .8em;
+            width: 240px;
+            border: 1px solid $form-inputs-border-color;
+            border-radius: 4px;
+        }
+        button {
+            font-weight: bold;
+            font-size: .8em;
+            padding: 8px 16px;
+            margin: 0 0 0 10px;
+            border-radius: 4px;
+            border: 1px solid $form-inputs-border-color;
+            background-color: #fff;
+        }
+        button:hover {
+            background-color: #f1f1f1;
+        }
+    }
+}
+.no-results {
+    display: none;
+    margin-top: 20px;
+    background-color: #F2DEDF;
+    border: solid 1px #dbb1b3;
+    border-radius: 3px;
+    color: #AB4748;
+    padding: 15px;
+    font-size: 14px;
+}
+.results {
+    display: none;
+    margin-top: 15px;
+    .user-logo {
+        width: 72px;
+        height: 72px;
+        float: left;
+        margin-right: 15px;
+        img {
+            height: -webkit-fill-available;
+        }
+    }
+    .user-info {
+        height: 72px;
+    }
+    .repositories {
+        margin-top: 20px;
+    }
+    hr {
+        margin-top: 10px;
+        border: solid 1px gray;
+    }
+    #reposTable {
+        table-layout: initial;
+        width: 100%;
+    }
+}
+td, th {
+    border-bottom: 1px solid #ccc;
+    text-align: left;
+    padding: 10px;
+}
+td {
+    text-align: right;
+    font-size: 14px;
+}
