@@ -1,3 +1,8 @@
+/**
+  icons for iOS (Web Clip)
+  *https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html
+  */
+
 const GITHUB_USERS = "https://api.github.com/users/";
 const resultsDiv = document.querySelector(".results");
 const noResultsDiv = document.querySelector(".no-results");
