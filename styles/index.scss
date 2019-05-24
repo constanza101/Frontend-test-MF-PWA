@@ -21,7 +21,6 @@ body {
 .full-name {
     padding-top: 5px;
     padding-bottom: 5px;
-    font-size: 2em;
 }
 .main-container {
     background-color: #fff;
@@ -37,7 +36,6 @@ body {
         input {
             padding: 8px 16px;
             font-size: .8em;
-            width: 230px;
             border: 1px solid $form-inputs-border-color;
             border-radius: 4px;
         }
