@@ -14,7 +14,11 @@ self.addEventListener('install', function(event) {
  );
 });
 
-
-this.addEventListener('fetch', function (event) {
-    // it can be empty if you just want to get rid of that error
+self.addEventListener('fetch', function(event) {
+    console.log(event.request.url);
+    event.respondWith(
+        caches.match(event.request).then(function(response) {
+        return response || fetch(event.request);
+        })
+    );
 });

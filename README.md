@@ -5,9 +5,9 @@
   * **Icons for iOS (Web Clip)**
 
 
-
 **Service worker**
 --
+[source](https://codelabs.developers.google.com/codelabs/offline/#0)
 *  **Where to find, try offline and uninstall the Service Worker**
   * DevTools > Application > Service Workers
     * offline checkbox to check offline behavior.
@@ -63,8 +63,46 @@ self.addEventListener('install', function(event) {
 });
 ```
 
+* **Intercept the web page
+ requests**
+
+*(One powerful feature of service workers is that it can intercept every request that the page makes and decide what to do with the request.)*
+
+  Make service worker intercept requests and return the cached versions of assets, rather than going to the network to retrieve them.
 
 
+1. The first step is to attach an event handler to the fetch event. This event is triggered for every request that is made (do not copy this yet, as we will need to add something else later).
+
+
+```javascript
+self.addEventListener('fetch', function(event) {
+  console.log(event.request.url);
+});
+```
+
+2. To make your application work offline you need to pull the requests from the cache, if it is available.
+ Update your fetch event listener to match the code below:
+
+
+
+
+``` JavaScript
+  self.addEventListener('fetch', function(event) {
+      console.log(event.request.url);
+      event.respondWith(
+          caches.match(event.request).then(function(response) {
+          return response || fetch(event.request);
+          })
+      );
+  });
+  ```
+
+
+  `event.respondWith()` method tells the browser to evaluate the result of the event in the future.
+
+   `caches.match(event.request)` takes the current web request that triggered the fetch event and looks in the cache for a resource that matches. The match is performed by looking at the URL string. The `match` method returns a promise that resolves even if the file is not found in the cache. This means that you get a choice about what you do. In your simple case, when the file is not found, you simply want to fetch it from the network and return it to the browser.
+
+(This is the simplest case; there are many other caching scenarios. For example, you could incrementally cache all responses for previously uncached requests, so in the future they are all returned from the cache.)
 
 
 
@@ -80,15 +118,15 @@ self.addEventListener('install', function(event) {
 **Styles**
 --
 * **Avoid zoom-in on input focus (safari mobile):**
-* [font](https://stackoverflow.com/questions/2989263/disable-auto-zoom-in-input-text-tag-safari-on-iphone) Set the font size of your inputs to at least 16px.
+Set the font size of your inputs to at least 16px. [source](https://stackoverflow.com/questions/2989263/disable-auto-zoom-in-input-text-tag-safari-on-iphone)
 
-@media screen and (-webkit-min-device-pixel-ratio:0) {
-  select,
-  textarea,
-  input, button {
-    font-size: 16px;
-  }
-}
+      @media screen and (-webkit-min-device-pixel-ratio:0) {
+        select,
+        textarea,
+        input, button {
+          font-size: 16px;
+        }
+      }
 
 
 **Icons for iOS (Web Clip)**
@@ -105,4 +143,6 @@ self.addEventListener('install', function(event) {
 
 **Fonts and interesting articles**
 --
-[9 amazing PWA secrets](https://www.creativebloq.com/features/9-amazing-pwa-secrets)
+* [9 amazing PWA secrets](https://www.creativebloq.com/features/9-amazing-pwa-secrets)
+* [Designing Native-Like Progressive Web Apps For iOS](https://medium.com/appscope/designing-native-like-progressive-web-apps-for-ios-1b3cdda1d0e8)
+* [Lighthouse](https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk/related) - desktop web app to test PWAs efficiency
