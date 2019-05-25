@@ -134,7 +134,9 @@ function printRepos(repos) {
 
         tableElement.innerHTML +=
         `<tr>
-          <th scope="row">${repoName}</th>
+          <th scope="row">
+          <a href="${repoUrl}">${repoName}</a>
+          </th>
           <td>${starImg} ${stars} ${forkImg} ${forks}</td>
         </tr>`;
     }

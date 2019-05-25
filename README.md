@@ -129,12 +129,15 @@ Set the font size of your inputs to at least 16px. [source](https://stackoverflo
       }
 
 
+
 **Icons for iOS (Web Clip)**
 --
 [Font](https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html)
 
+**Splash screens for iOs**
+--
 
-
+[Splash screen generator](https://appsco.pe/developer/splash-screens)
 
 
 
