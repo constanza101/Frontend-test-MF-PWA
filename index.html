@@ -12,6 +12,9 @@
       <!-- to change status bar color-->
       <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
+      <!-- meta description :  High-quality descriptions can be displayed in Google's search results, and can go a long way to improving your search traffic.-->
+      <meta name="Description" content="Author: Constanza Díaz - Marfeel Front end test - Github repositories list search">
+
 
       <!-- Web clips:  icons for iOs devices -->
       <link rel="apple-touch-icon" href="images/icons/icon-152.png">
@@ -26,8 +29,8 @@
       <div class="main-container">
          <section class="search-form">
             <form id="searchForm">
-               <input type="text" id="searchInput" placeholder="Search username..."  required>
-               <button id="searchButton">Search</button>
+               <input aria-label="search-input" type="text" id="searchInput" placeholder="Search username..."  required>
+               <button aria-label="search-button"id="searchButton">Search</button>
             </form>
          </section>
          <section class="no-results">
@@ -53,5 +56,6 @@
          </section>
       </div>
       <script type="text/javascript" src="index.js"> </script>
+      <script type="text/javascript" src="scripts/register-service-worker.js"> </script>
    </body>
 </html>

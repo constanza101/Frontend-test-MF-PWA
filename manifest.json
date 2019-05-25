@@ -6,6 +6,7 @@
   "display": "standalone",
   "Scope": "/",
   "start_url": "/index.html",
+  "splash_pages": null,
   "icons": [
     {
       "src": "images/icons/icon-16.png",
@@ -171,14 +172,11 @@
       "src": "images/icons/icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
-    }
+    },
     {
       "src": "images/icons/icon-1024.png",
       "sizes": "1024x1024",
       "type": "image/png"
-    },
-
-
-  ],
-  "splash_pages": null
+    }
+  ]
 }
