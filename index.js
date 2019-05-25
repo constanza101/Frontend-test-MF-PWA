@@ -131,6 +131,7 @@ function printRepos(repos) {
         let repoName = repos[i].name;
         let stars = repos[i].stargazers_count;
         let forks = repos[i].forks_count;
+        let repoUrl = repos[i].html_url;
 
         tableElement.innerHTML +=
         `<tr>
