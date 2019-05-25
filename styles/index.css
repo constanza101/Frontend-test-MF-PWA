@@ -22,24 +22,9 @@ body {
   background-color: #F0F0F0;
 }
 
-a {
+a, a:link, a:visited, a:hover, a:active {
   color: black;
-}
-
-a:link {
   text-decoration: none;
-}
-
-a:visited {
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-a:active {
-  text-decoration: underline;
 }
 
 .login-name, .description {
