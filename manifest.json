@@ -7,6 +7,7 @@
   "Scope": "/",
   "start_url": "/index.html",
   "splash_pages": null,
+  "prefer_related_applications": false,
   "icons": [
     {
       "src": "images/icons/icon-16.png",

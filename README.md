@@ -3,11 +3,13 @@
   * **Styles**
       * Avoid zoom-in on input focus (safari mobile).
   * **Icons for iOS (Web Clip)**
+  * **Splash screens for iOS**
+  * **Add to Home Screen**
 
 
 **Service worker**
 --
-[source](https://codelabs.developers.google.com/codelabs/offline/#0)
+[Source](https://codelabs.developers.google.com/codelabs/offline/#0)
 *  **Where to find, try offline and uninstall the Service Worker**
   * DevTools > Application > Service Workers
     * offline checkbox to check offline behavior.
@@ -128,20 +130,136 @@ Set the font size of your inputs to at least 16px. [source](https://stackoverflo
         }
       }
 
+* **Link styling (no decorators)**
+
+      a, a:link, a:visited, a:hover, a:active  {
+        color: black;
+        text-decoration: none;
+      }
+
 
 
 **Icons for iOS (Web Clip)**
 --
-[Font](https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html)
+How to add web clip icons for iOs devices? They {still? - will they ever?} do not read the icons in the manifest.json, so we have add them to the `<head>` of index.html, example:
+
+```
+<link rel="apple-touch-icon" href="touch-icon-iphone.png">
+<link rel="apple-touch-icon" sizes="152x152" href="touch-icon-ipad.png">
+<link rel="apple-touch-icon" sizes="180x180" href="touch-icon-iphone-retina.png">
+<link rel="apple-touch-icon" sizes="167x167" href="touch-icon-ipad-retina.png">
+```
+* [Source](https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html)
+* [Icons generator (npm package)](https://www.npmjs.com/package/pwa-icon-generator)
+* [Icons generator too onlne](http://cthedot.de/icongen/)
 
 **Splash screens for iOs**
 --
+Do not forget that in order to have a custom launch screen, your app needs to be mobile web app capable, which can be accomplished with the following meta tag.
 
-[Splash screen generator](https://appsco.pe/developer/splash-screens)
+`<meta name="apple-mobile-web-app-capable" content="yes">`
 
 
+And add the following links to the `<head>`:
+
+```
+<!-- iPhone X (1125px x 2436px) -->
+<link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" href="/apple-launch-1125x2436.png">
+
+<!-- iPhone 8, 7, 6s, 6 (750px x 1334px) -->
+<link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" href="/apple-launch-750x1334.png">
+
+<!-- iPhone 8 Plus, 7 Plus, 6s Plus, 6 Plus (1242px x 2208px) -->
+<link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3)" href="/apple-launch-1242x2208.png">
+
+<!-- iPhone 5 (640px x 1136px) -->
+<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" href="/apple-launch-640x1136.png">
+
+<!-- iPad Mini, Air (1536px x 2048px) -->
+<link rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" href="/apple-launch-1536x2048.png">
+
+<!-- iPad Pro 10.5" (1668px x 2224px) -->
+<link rel="apple-touch-startup-image" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" href="/apple-launch-1668x2224.png">
+
+<!-- iPad Pro 12.9" (2048px x 2732px) -->
+<link rel="apple-touch-startup-image" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" href="/apple-launch-2048x2732.png">
+```     
+
+* [Source](https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html)
+* [Splash screens generator](https://appsco.pe/developer/splash-screens)
+
+**Add to Home Screen**
+--
+[Source](https://developers.google.com/web/fundamentals/app-install-banners/#criteria)
+
+"Add to Home Screen", sometimes referred to as the web app install prompt, makes it easy for users to install your Progressive Web App on their mobile or desktop device. After the user accepts the prompt, your PWA will be added to their launcher, and it will run like any other installed app.
+
+* **Chrome:**
+--
+The "add to home screen" feature is not yet very much known among mobile users, so most people will not know that they can add your app to their homescreen to be able to use it the way they use natve apps. We can help them do this, adding a "add to home screen button"
+  * On mobile, Chrome will generate a [WebAPK (android)](https://developers.google.com/web/fundamentals/integration/webapks), creating an even more integrated experience for your users.
+  * On desktop, your app will installed, and run in an [app window](https://developers.google.com/web/progressive-web-apps/desktop#app-window).
 
 
+* **Required manifest properties**
+
+To prompt the user to install your **native app**, you need to add two properties to your web app **manifest**, `prefer_related_applications` (set to true for native apps) and `related_applications`:
+
+```
+"prefer_related_applications": false,
+"related_applications": [
+  {
+    "platform": "play",
+    "id": "com.google.samples.apps.iosched"
+  }
+]
+```
+* **How does this work?**
+    * The `prefer_related_applications` property tells the browser to prompt the user with your native app instead of the web app.
+
+    **Leaving this value unset, or false, the browser will prompt the user to install the web app instead.**
+
+    * `related_applications` is an array with the location info of yout **native** app (see more in the [source](https://developers.google.com/web/fundamentals/app-install-banners/native#prefer_related))
+
+
+* **Show the install prompt:**
+
+  1. Listen for the beforeinstallprompt event.
+  2. Notify the user your native app can be installed with a button or other element that will generate a user gesture event.
+  3. Show the prompt by calling prompt() on the saved beforeinstallprompt event.
+
+
+```javascript
+
+let deferredPrompt;
+//(1: listen beforeinstallprompt)
+window.addEventListener('beforeinstallprompt', (e) => {
+  // Prevent Chrome 67 and earlier from automatically showing the prompt:
+  e.preventDefault();
+  // Stash the event so it can be triggered later:
+  deferredPrompt = e;
+  // Update UI to (2:) notify the user they can add to home screen:
+  btnAdd.style.display = 'block';
+});
+
+//(3) Show the prompt by calling prompt() on the saved beforeinstallprompt event.
+btnAdd.addEventListener('click', (e) => {
+  // hide our user interface that shows our "add to home screen" (A2HS) button:
+  btnAdd.style.display = 'none';
+  // Show the prompt:
+  deferredPrompt.prompt();
+  // Wait for the user to respond to the promp:t
+  deferredPrompt.userChoice
+    .then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        console.log('User accepted the A2HS prompt');
+      } else {
+        console.log('User dismissed the A2HS prompt');
+      }
+      deferredPrompt = null;
+    });
+});
+```
 
 
 **Fonts and interesting articles**
