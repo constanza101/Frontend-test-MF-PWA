@@ -1,10 +1,15 @@
+This is a mobile version of the app developed [here](https://github.com/constanza101/Frontend-test-MF) which can be used as a mobile app thanks to some innovative techniques which let us emulate a native app, which does not need to be downloaded from any app store.
+
+There are as well some changes in the javascript methods such as making HTTP resquests by "fetch" and using promises, instead of "AJAX" with callbacks.
+* [Most popular ways to make an HTTP request in JavaScript](https://www.freecodecamp.org/news/here-is-the-most-popular-ways-to-make-an-http-request-in-javascript-954ce8c95aaa/)
+
 **Index**
-  * **Service Worker**
-  * **Styles**
+  * [**Service Worker**](https://github.com/constanza101/Frontend-test-MF-PWA#service-worker)
+  * [**Styles**](https://github.com/constanza101/Frontend-test-MF-PWA#styles)
       * Avoid zoom-in on input focus (safari mobile).
-  * **Icons for iOS (Web Clip)**
-  * **Splash screens for iOS**
-  * **Add to Home Screen**
+  * [**Icons for iOS (Web Clip)**](https://github.com/constanza101/Frontend-test-MF-PWA#icons-for-ios-web-clip)
+  * [**Splash screens for iOS mobile devices**](https://github.com/constanza101/Frontend-test-MF-PWA#splash-screens-for-ios)
+  * [**Add to Home Screen**](https://github.com/constanza101/Frontend-test-MF-PWA#add-to-home-screen)
 
 
 **Service worker**
@@ -196,14 +201,18 @@ And add the following links to the `<head>`:
 
 * **Chrome:**
 --
-The "add to home screen" feature is not yet very much known among mobile users, so most people will not know that they can add your app to their homescreen to be able to use it the way they use natve apps. We can help them do this, adding a "add to home screen button"
-  * On mobile, Chrome will generate a [WebAPK (android)](https://developers.google.com/web/fundamentals/integration/webapks), creating an even more integrated experience for your users.
-  * On desktop, your app will installed, and run in an [app window](https://developers.google.com/web/progressive-web-apps/desktop#app-window).
+The "add to home screen" feature is not yet very much known among mobile users, so most people will not know that they can add your app to their homescreen to be able to use it the way they use natve apps. We can help them do this, adding a "add to home screen button".
+
+  * **On mobile**, Chrome will generate a [WebAPK (android)](https://developers.google.com/web/fundamentals/integration/webapks), creating an even more integrated experience for your users.
+  * **On desktop**, your app will installed, and run in an [app window](https://developers.google.com/web/progressive-web-apps/desktop#app-window).
 
 
 * **Required manifest properties**
 
-To prompt the user to install your **native app**, you need to add two properties to your web app **manifest**, `prefer_related_applications` (set to true for native apps) and `related_applications`:
+To prompt the user to install your **native app**, you need to add two properties to your web app **manifest**:
+
+ `prefer_related_applications` (set to true for native apps) and
+ `related_applications`:
 
 ```
 "prefer_related_applications": false,
