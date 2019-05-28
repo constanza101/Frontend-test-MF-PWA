@@ -1,16 +1,30 @@
+**Github Search PWA**
+--
+
 This is a mobile version of the app developed [here](https://github.com/constanza101/Frontend-test-MF) which can be used as a mobile app thanks to some innovative techniques which let us emulate a native app, which does not need to be downloaded from any app store.
 
 There are as well some changes in the javascript methods such as making HTTP resquests by "fetch" and using promises, instead of "AJAX" with callbacks.
-* [Most popular ways to make an HTTP request in JavaScript](https://www.freecodecamp.org/news/here-is-the-most-popular-ways-to-make-an-http-request-in-javascript-954ce8c95aaa/)
+
+[Most popular ways to make an HTTP request in JavaScript](https://www.freecodecamp.org/news/here-is-the-most-popular-ways-to-make-an-http-request-in-javascript-954ce8c95aaa/)
+
+* **Description of every step for giving life to my new PWA (Progressive Web Application):**
 
 **Index**
+  * [**manifest.json**]()
   * [**Service Worker**](https://github.com/constanza101/Frontend-test-MF-PWA#service-worker)
   * [**Styles**](https://github.com/constanza101/Frontend-test-MF-PWA#styles)
       * Avoid zoom-in on input focus (safari mobile).
   * [**Icons for iOS (Web Clip)**](https://github.com/constanza101/Frontend-test-MF-PWA#icons-for-ios-web-clip)
   * [**Splash screens for iOS mobile devices**](https://github.com/constanza101/Frontend-test-MF-PWA#splash-screens-for-ios)
-  * [**Add to Home Screen**](https://github.com/constanza101/Frontend-test-MF-PWA#add-to-home-screen)
+  * [**Add to Home Screen**](https://github.com/constanza101/Frontend-test-MF-PWA#add-to-home-screen)(App install prompt)
 
+**The Manifest**
+--
+The web app **manifest** is a simple JSON file that tells the browser about your web application and how it should behave when 'installed' on the user's mobile device or desktop. Having a manifest is required by Chrome to show the [Add to Home Screen prompt](https://github.com/constanza101/Frontend-test-MF-PWA#add-to-home-screen) which not only will add an icon of our website on the home screen, we can also make our website look "almost" like a native app which can do things like sending push notifications and even work offline, thanks to the [serviceWorker](https://github.com/constanza101/Frontend-test-MF-PWA#service-worker).
+Other advantages of these kind of apps is that they take MUCH LESS space in the devices and that they do not need to pass AppStore or PlayStore audits or pay anything to be able to reach the users homescreens.
+[Source: How to create a manifest.](https://developers.google.com/web/fundamentals/web-app-manifest/)
+
+There are some techniques we can use to make our app look more similar to a native app, which will be described below.
 
 **Service worker**
 --
@@ -232,6 +246,7 @@ To prompt the user to install your **native app**, you need to add two propertie
 
 
 * **Show the install prompt:**
+[Source](https://love2dev.com/blog/beforeinstallprompt/)
 
   1. Listen for the beforeinstallprompt event.
   2. Notify the user your native app can be installed with a button or other element that will generate a user gesture event.
@@ -275,4 +290,4 @@ btnAdd.addEventListener('click', (e) => {
 --
 * [9 amazing PWA secrets](https://www.creativebloq.com/features/9-amazing-pwa-secrets)
 * [Designing Native-Like Progressive Web Apps For iOS](https://medium.com/appscope/designing-native-like-progressive-web-apps-for-ios-1b3cdda1d0e8)
-* [Lighthouse](https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk/related) - desktop web app to test PWAs efficiency
+* [Lighthouse](https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk/related) - desktop web app to test PWAs efficiency (Audit).
