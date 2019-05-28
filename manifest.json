@@ -4,8 +4,8 @@
   "theme_color": "#317EFB",
   "background_color": "#2196f3",
   "display": "standalone",
-  "Scope": "/",
-  "start_url": "/index.html",
+  "scope": "/",
+  "start_url": "index.html",
   "splash_pages": null,
   "prefer_related_applications": false,
   "icons": [
